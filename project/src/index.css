@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply text-primary font-sans bg-neutral overflow-x-hidden min-h-screen;
+    width: 100%;
+    position: relative;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg rounded-xl shadow-lg;
+  }
+  
+  .hover-scale {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  
+  .button-primary {
+    @apply w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-secondary to-accent text-white font-medium rounded-xl 
+           shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+  }
+  
+  .button-secondary {
+    @apply w-full sm:w-auto px-6 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white 
+           font-medium rounded-xl transition-all duration-300 hover:bg-white/20;
+  }
+
+  .mobile-menu {
+    @apply fixed inset-x-0 top-[72px] bg-primary/95 backdrop-blur-sm;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  .section-padding {
+    @apply py-16;
+  }
+
+  .container {
+    @apply px-4 md:px-6 mx-auto max-w-[1280px] w-full;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-secondary to-accent rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-secondary-dark to-accent-dark;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  .section-padding {
+    @apply py-12;
+  }
+}
